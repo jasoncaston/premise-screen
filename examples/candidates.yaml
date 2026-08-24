@@ -1,0 +1,21 @@
+candidates:
+  - id: candidate-001
+    specific_pain_underserved: true
+    delivery_fit: true
+    local_first_deliverable: true
+    concrete_single_workflow: true
+  - id: candidate-002
+    specific_pain_underserved: true
+    delivery_fit: false
+    local_first_deliverable: true
+    concrete_single_workflow: true
+  - id: candidate-003
+    specific_pain_underserved: true
+    delivery_fit: true
+    local_first_deliverable: false
+    concrete_single_workflow: true
+  - id: candidate-004
+    specific_pain_underserved: true
+    delivery_fit: true
+    local_first_deliverable: true
+    concrete_single_workflow: false
