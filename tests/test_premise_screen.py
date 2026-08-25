@@ -124,15 +124,26 @@ def test_default_table_renderer_contains_real_results() -> None:
     assert "better_as_phone_app" in table
 
 
+@pytest.mark.parametrize(
+    ("suffix", "content"),
+    [
+        (".json", '{"candidates": []}\n'),
+        (".yaml", "candidates:\n"),
+    ],
+)
 def test_empty_candidate_list_has_defined_non_rejection_exit(
     tmp_path: Path,
     capsys: pytest.CaptureFixture[str],
+    suffix: str,
+    content: str,
 ) -> None:
-    source = tmp_path / "empty.json"
-    source.write_text('{"candidates": []}\n', encoding="utf-8")
+    source = tmp_path / f"empty{suffix}"
+    source.write_text(content, encoding="utf-8")
 
+    loaded = load_candidates(source)
     exit_code = main([str(source)])
     captured = capsys.readouterr()
+    assert loaded == []
     assert exit_code == 2
     assert captured.out == "No candidates found.\n"
     assert captured.err == ""

@@ -55,6 +55,10 @@ candidates:
 
 The default table and JSON output return `pass` or `reject` for every candidate. A rejection includes the exact failing criterion and one categorical reason: `generic_shell`, `better_as_phone_app`, or `not_deliverable_local_first`.
 
+## Exit codes
+
+Exit `0` means every candidate passed. Exit `1` means at least one candidate was rejected. Exit `2` means the input was invalid or contained no candidates.
+
 ## Aggregate result
 
 | Outcome | Count |
